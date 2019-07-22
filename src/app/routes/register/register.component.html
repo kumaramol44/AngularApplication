@@ -1,0 +1,66 @@
+<!-- main app container -->
+<div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <form [formGroup]="registerForm" (ngSubmit)="register($event, registerForm.value)">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" [formControl]="registerForm.controls['firstName']" class="form-control" />
+                            <div style="color: red;" *ngIf="registerForm.controls['firstName'].hasError('required') &&
+                                (registerForm.controls['firstName'].dirty || registerForm.controls['firstName'].touched)
+                              ">First Name is required</div>
+    
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" [formControl]="registerForm.controls['lastName']" class="form-control" />
+                            <div style="color: red;" *ngIf="registerForm.controls['lastName'].hasError('required') &&
+                                (registerForm.controls['lastName'].dirty || registerForm.controls['lastName'].touched)
+                              ">Last Name is required</div>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" [formControl]="registerForm.controls['emailaddress']" class="form-control" />
+                            <div style="color: red;" *ngIf="registerForm.controls['emailaddress'].hasError('required') &&
+                                (registerForm.controls['emailaddress'].dirty || registerForm.controls['emailaddress'].touched)
+                              ">Email is required</div>
+                            <!-- <div *ngIf="registerForm.email.errors.email">Email must be a valid email address</div> -->
+    
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" [formControl]="registerForm.controls['passsword']" class="form-control" />
+                            <div style="color: red;" *ngIf="registerForm.controls['passsword'].hasError('required') &&
+                            (registerForm.controls['passsword'].dirty || registerForm.controls['passsword'].touched)
+                          ">Password is required</div>
+                            <!-- <div *ngIf="registerForm.password.errors.minlength">Password must be at least 6 characters</div> -->
+    
+                        </div>
+                        <div class="form-group">
+                            <label>Confirm Password</label>
+                            <input type="password" [formControl]="registerForm.controls['confirmPassword']" class="form-control" />
+                            <div style="color: red;" *ngIf="registerForm.controls['confirmPassword'].hasError('required') &&
+                                (registerForm.controls['confirmPassword'].dirty || registerForm.controls['confirmPassword'].touched)
+                              ">Confirm Password is required</div>
+                            <div *ngIf="registerForm.hasError('notSame')">Passwords must match</div>
+    
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" type="submit">Register</button>&nbsp;
+                            <button class="btn btn-primary" type="button" (click)="redirectToLogin()">Cancel</button>
+                        </div>                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+            <ngx-spinner
+            bdColor="rgba(51,51,51,0.8)"
+            size="medium"
+            color="#fff"
+            type="ball-spin">
+            <p style="font-size: 20px; color: white">Loading...</p>
+          </ngx-spinner>
+    </div>

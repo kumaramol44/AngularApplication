@@ -1,0 +1,157 @@
+@import "~@swimlane/ngx-datatable/release/index.css";
+@import "~@swimlane/ngx-datatable/release/themes/bootstrap.css";
+@import "~@swimlane/ngx-datatable/release/assets/icons.css";
+
+@import "../../styles/bootstrap/functions";
+@import "../../styles/bootstrap/_variables";
+@import "../../styles/app/variables.scss";
+
+.ngx-datatable.bootstrap {
+  background-color: transparent;
+  box-shadow: 0 0 0 #000;
+}
+
+.ngx-datatable.scroll-vertical {
+  height: 300px;
+}
+
+// workaround for use of detail rows
+// with other table in the same page
+.no-detail-row .datatable-row-detail {
+  display: none !important;
+}
+
+// change color of active cells selected
+.ngx-datatable.bootstrap.single-selection .datatable-body-row.active,
+.ngx-datatable.bootstrap.single-selection
+  .datatable-body-row.active
+  .datatable-row-group,
+.ngx-datatable.bootstrap.multi-selection .datatable-body-row.active,
+.ngx-datatable.bootstrap.multi-selection
+  .datatable-body-row.active
+  .datatable-row-group,
+.ngx-datatable.bootstrap.multi-click-selection .datatable-body-row.active,
+.ngx-datatable.bootstrap.multi-click-selection
+  .datatable-body-row.active
+  .datatable-row-group,
+.ngx-datatable.bootstrap.single-selection .datatable-body-row.active:hover,
+.ngx-datatable.bootstrap.single-selection
+  .datatable-body-row.active:hover
+  .datatable-row-group,
+.ngx-datatable.bootstrap.multi-selection .datatable-body-row.active:hover,
+.ngx-datatable.bootstrap.multi-selection
+  .datatable-body-row.active:hover
+  .datatable-row-group,
+.ngx-datatable.bootstrap.multi-click-selection .datatable-body-row.active:hover,
+.ngx-datatable.bootstrap.multi-click-selection
+  .datatable-body-row.active:hover
+  .datatable-row-group {
+  background-color: $primary !important;
+  .datatable-body-cell {
+    color: #fff;
+  }
+}
+// remove link decoration
+.datatable-icon-right {
+  text-decoration: none !important;
+}
+// align table with no data legend
+.ngx-datatable.bootstrap .empty-row {
+  text-align: center;
+  margin-top: 20px;
+}
+// tabele footer
+.ngx-datatable.bootstrap .datatable-footer {
+  background-color: transparent;
+  color: $body-color;
+}
+// table pagination
+
+.ngx-datatable.bootstrap .datatable-footer .datatable-pager a {
+  color: $pagination-color;
+}
+.pager li > a,
+.pager li > span {
+  border-color: $pagination-border-color;
+}
+.ngx-datatable.bootstrap
+  .datatable-footer
+  .datatable-pager
+  ul
+  li:not(.disabled).active
+  a,
+.ngx-datatable.bootstrap
+  .datatable-footer
+  .datatable-pager
+  ul
+  li:not(.disabled):hover
+  a {
+  background-color: $primary;
+  border-color: $primary;
+  color: #fff;
+}
+
+.ngx-datatable.bootstrap .datatable-body .datatable-body-row {
+  border: 0;
+}
+
+.ngx-datatable.bootstrap
+  .datatable-body
+  .datatable-body-row.datatable-row-even {
+  background-color: rgba(0, 0, 0, 0.025);
+}
+
+input[type="date"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  display: none;
+}
+
+.ngx-datatable.bootstrap .datatable-body .progress-linear {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 5px;
+  padding: 0;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  position: absolute;
+}
+
+.ngx-datatable.bootstrap .datatable-body .progress-linear .container {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 5px;
+  -webkit-transform: translate(0, 0) scale(1, 1);
+  transform: translate(0, 0) scale(1, 1);
+  background-color: #aad1f9;
+}
+
+.ngx-datatable.bootstrap .datatable-body .progress-linear .container .bar {
+  transition: all 0.2s linear;
+  -webkit-animation: query 0.8s infinite cubic-bezier(0.39, 0.575, 0.565, 1);
+  animation: query 0.8s infinite cubic-bezier(0.39, 0.575, 0.565, 1);
+  transition: -webkit-transform 0.2s linear;
+  transition: transform 0.2s linear;
+  background-color: #1063ba;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 5px;
+}
+/**
+ * Progress bar animations
+ */
+@keyframes query {
+  0% {
+    opacity: 1;
+    transform: translateX(35%) scale(0.3, 1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0, 1);
+  }
+}

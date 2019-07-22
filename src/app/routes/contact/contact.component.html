@@ -1,0 +1,125 @@
+<div class="jumbotron">
+    <div class="container">
+
+        <div class="col-md-6 offset-md-3">
+            <form [formGroup]="contactForm" (ngSubmit)="sendEmail($event, contactForm.value)">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Your personal information</label>
+                        <div class="form-group">
+                            <input data-val="true" class="form-control" id="Name" formControlName="name"
+                                placeholder="Your name" type="text">
+                                <div *ngIf="contactForm.controls['name'].invalid && (contactForm.controls['name'].dirty || contactForm.controls['name'].touched)"
+                                class="alert alert-danger">
+                            
+                              <div *ngIf="contactForm.controls['name'].errors.required">
+                                Name is required.
+                              </div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group ">
+                            <input data-val="true" class="form-control" id="Email" formControlName="emailaddress"
+                                placeholder="Email address" type="text">
+                                <div *ngIf="contactForm.controls['emailaddress'].invalid && (contactForm.controls['emailaddress'].dirty || contactForm.controls['emailaddress'].touched)"
+                                class="alert alert-danger">
+                            
+                              <div *ngIf="contactForm.controls['emailaddress'].errors.required">
+                                Email is required.
+                              </div></div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+
+                            <input id="Phone" class="form-control" formControlName="telephone" placeholder="Telephone"
+                                type="text">
+                                <div *ngIf="contactForm.controls['telephone'].invalid && (contactForm.controls['telephone'].dirty || contactForm.controls['telephone'].touched)"
+                                class="alert alert-danger">
+                            
+                              <div *ngIf="contactForm.controls['telephone'].errors.required">
+                                Telephone is required.
+                              </div></div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row margin-top50">
+
+                    <div class="col-md-6">
+                        <label>Support type</label>
+                        <div class="form-group">
+
+
+                            <select class="form-control" id="SupportType" name="SupportType">
+                                <option value="">Select support type</option>
+                                <option value="Service">Service</option>
+                                <option value="Account">Account</option>
+                                <option value="Payment">Payment</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6 ">
+                        <label>Subject</label>
+                        <div class="form-group">
+                            <input data-val="true" class="form-control" id="Subject" formControlName="subject"
+                                placeholder="Subject" type="text" value="">
+                                <div *ngIf="contactForm.controls['subject'].invalid && (contactForm.controls['subject'].dirty || contactForm.controls['subject'].touched)"
+                                class="alert alert-danger">
+                            
+                              <div *ngIf="contactForm.controls['subject'].errors.required">
+                                Subject is required.
+                              </div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Description</label>
+                        <div class="form-group">
+                            <textarea class="form-control" cols="20" id="message" formControlName="description" name="Message" maxlength="200"
+                                placeholder="Please write your message here..." rows="2"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="display: none">
+
+                    <div class="col-md-6" style="display: none">
+                        <div class="form-group">
+                            <input type="text" name="Website" id="Website" style="display:none !important" tabindex="-1"
+                                autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="col-md-6" style="display: none">
+                        <div class="form-group">
+                            <input type="text" name="MiddleName" id="MiddleName" style="display:none !important"
+                                tabindex="-1" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <button type="submit"  class="btn btn-primary">
+                            <span>Send message</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+</div>
+<div>
+        <ngx-spinner
+        bdColor="rgba(51,51,51,0.8)"
+        size="medium"
+        color="#fff"
+        type="ball-spin">
+        <p style="font-size: 20px; color: white">Loading...</p>
+      </ngx-spinner>
+</div>

@@ -1,0 +1,50 @@
+<div>
+    <div class="container">
+        <div class="col-md-6 offset-md-3">
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label style="margin-left: 200px;">Login</label>
+                        <div class="form-group">
+                            <input class="form-control" id="username" [formControl]="loginForm.controls['username']"
+                                placeholder="UserName" type="text">
+                                <div *ngIf="loginForm.controls['username'].invalid && (loginForm.controls['username'].dirty || loginForm.controls['username'].touched)"
+                                class="alert alert-danger">
+                            
+                              <div *ngIf="loginForm.controls['username'].errors.required">
+                                UserName is required.
+                              </div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group ">
+                            <input class="form-control" id="password" [formControl]="loginForm.controls['password']"
+                                placeholder="Password" type="password">
+                                <div *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)"
+                                class="alert alert-danger">
+                            
+                              <div *ngIf="loginForm.controls['password'].errors.required">
+                                Password is required.
+                              </div></div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <button type="submit" (click)="validateForm()" class="btn btn-primary">
+                            <span>Login</span>
+                        </button>&nbsp;
+                        <button class="btn btn-secondary" (click)="signUp()">
+                            <span>Sign Up</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

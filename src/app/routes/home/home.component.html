@@ -1,0 +1,135 @@
+<input type="text" style="padding:8px;margin:15px auto;width:30%;" placeholder="Type to filter the name column..."
+  (keyup)="updateFilter($event)" />
+<div>
+  <ngx-datatable #table class="bootstrap no-detail-row" [columnMode]="'force'" [rows]="rows" [externalPaging]="true"
+    [externalSorting]="true" [sortType]="'single'" [count]="page.count" [offset]="page.offset" [limit]="page.limit"
+    (page)="pageCallback($event)" (sort)="sortCallback($event)" [headerHeight]="50" [footerHeight]="50"
+    [rowHeight]="'auto'">
+
+    <ngx-datatable-row-detail [rowHeight]="100" #myDetailRow (toggle)="onDetailToggle($event)">
+      <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+        <div style="padding-left:35px;">
+          <div><strong>Address</strong></div>
+          <div>Expander for testing</div>
+        </div>
+      </ng-template>
+    </ngx-datatable-row-detail>
+
+    <ngx-datatable-column [width]="50" [resizeable]="false" [sortable]="false" [draggable]="false"
+      [canAutoResize]="false">
+      <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+        <a href="javascript:void(0)" [class.datatable-icon-right]="!expanded" [class.datatable-icon-down]="expanded"
+          title="Expand/Collapse Row" (click)="toggleExpandRow(row)">
+        </a>
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column *ngFor="let col of columns" [prop]="col.prop" [pipe]="col.pipe">
+    </ngx-datatable-column>
+
+    <!-- <ngx-datatable-column>
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <button type="button" class="btn btn-primary" (click)="openModalDialog($event,row)">Edit</button>
+        <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <span>Transaction Details</span>
+                <button type="button" class="close" aria-label="Close" (click)="closeModalDialog()"><span
+                    aria-hidden="true">&times;</span></button>
+              </div>
+
+              <div class="modal-body">
+                <form [formGroup]="transactionForm" (ngSubmit)="saveChanges(transactionForm.value)">
+                  <input type="hidden" formControlName="id">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Sending Amount</label>
+                        <input class="form-control" id="sendingAmount" formControlName="sendingAmount"
+                          placeholder="Sending Amount" type="number">
+                        <div
+                          *ngIf="transactionForm.controls['sendingAmount'].invalid && (transactionForm.controls['sendingAmount'].dirty || transactionForm.controls['sendingAmount'].touched)"
+                          class="alert alert-danger">
+
+                          <div *ngIf="transactionForm.controls['sendingAmount'].errors.required">
+                            Sending Amount is required.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Receiving Amount</label>
+                        <input data-val="true" class="form-control" id="recievingAmount"
+                          formControlName="recievingAmount" placeholder="Receiving Amount" type="number">
+                        <div
+                          *ngIf="transactionForm.controls['recievingAmount'].invalid && (transactionForm.controls['recievingAmount'].dirty || transactionForm.controls['recievingAmount'].touched)"
+                          class="alert alert-danger">
+
+                          <div *ngIf="transactionForm.controls['recievingAmount'].errors.required">
+                            Receving Amount is required.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Sending Currency</label>
+                        <input data-val="true" class="form-control" id="sendingCurrency"
+                          formControlName="sendingCurrency" placeholder="Receiving Amount" type="text">
+                        <div
+                          *ngIf="transactionForm.controls['sendingCurrency'].invalid && (transactionForm.controls['sendingCurrency'].dirty || transactionForm.controls['sendingCurrency'].touched)"
+                          class="alert alert-danger">
+
+                          <div *ngIf="transactionForm.controls['sendingCurrency'].errors.required">
+                            Receving Amount is required.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Receiving Currency</label>
+                        <input data-val="true" class="form-control" id="recievingCurrency"
+                          formControlName="recievingCurrency" placeholder="Receiving Amount" type="text">
+                        <div
+                          *ngIf="transactionForm.controls['recievingCurrency'].invalid && (transactionForm.controls['recievingCurrency'].dirty || transactionForm.controls['recievingCurrency'].touched)"
+                          class="alert alert-danger">
+
+                          <div *ngIf="transactionForm.controls['recievingCurrency'].errors.required">
+                            Receving Amount is required.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary"> <span>Save</span></button>
+                    <button type="button" class="btn btn-default" (click)="closeModalDialog()">Close</button>
+                  </div>
+                </form>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </ngx-datatable-column> -->
+
+  </ngx-datatable>
+</div>
+
+
+<div>
+  <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-spin">
+    <p style="font-size: 20px; color: white">Loading...</p>
+  </ngx-spinner>
+</div>
