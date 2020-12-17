@@ -30,7 +30,7 @@
     "angular7-data-table": "^1.0.11",
     "bootstrap": "^4.0.0",
     "chart.js": "^2.8.0",
-    "datatables.net": "^1.10.19",
+    "datatables.net": "^1.10.22",
     "datatables.net-dt": "^1.10.19",
     "font-awesome": "^4.7.0",
     "jquery": "^3.4.1",
